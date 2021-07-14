@@ -16,6 +16,8 @@ RUN apt-get update \
 		less \
 		locales \
 		vim-tiny \
+		libxml2-dev \
+		libcurl4-gnutls-dev \
 		wget \
 		ca-certificates \
         && add-apt-repository --enable-source --yes "ppa:marutter/rrutter4.0" \
@@ -47,6 +49,7 @@ RUN apt-get update \
          r-cran-data.table \
          r-cran-purrr \
          r-cran-ggplot2 \
+				 r-cran-httr \
          r-cran-biocmanager \
 		 r-cran-glue \
 		 r-cran-stringr \
@@ -54,6 +57,7 @@ RUN apt-get update \
 		 r-cran-rio \
 		#  R -e "BiocManager::install('<package_name>')" \
   	&& ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r \
+	&& R -e "BiocManager::install('ballgown')" \
  	&& ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
  	&& ln -s /usr/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
  	&& ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r \
